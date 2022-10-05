@@ -25,24 +25,67 @@ module "main" {
   tenant = aci_rest_managed.fvTenant.content.name
 }
 
-# data "aci_rest_managed" "bgpCtxAfPol" {
-#   dn = "uni/tn-${aci_rest_managed.fvTenant.content.name}/BD-${module.main.name}/bgpCtxAfP-TEST_MINIMAL"
+data "aci_rest_managed" "bgpCtxAfPol" {
+  dn = "uni/tn-${aci_rest_managed.fvTenant.content.name}/BD-${module.main.name}/bgpCtxAfP-TEST_MINIMAL"
 
-#   depends_on = [module.main]
-# }
+  depends_on = [module.main]
+}
 
-# resource "test_assertions" "bgpCtxAfPol" {
-#   component = "bgpCtxAfPol"
+resource "test_assertions" "bgpCtxAfPol" {
+  component = "bgpCtxAfPol"
 
-#   equal "name" {
-#     description = "name"
-#     got         = data.aci_rest_managed.bgpCtxAfPol.content.name
-#     want        = "TEST_MINIMAL"
-#   }
+  equal "name" {
+    description = "name"
+    got         = data.aci_rest_managed.bgpCtxAfPol.content.name
+    want        = "TEST_MINIMAL"
+  }
 
-#   equal "descr" {
-#     description = "descr"
-#     got         = data.aci_rest_managed.bgpCtxAfPol.content.descr
-#     want        = ""
-#   }
-# }
+  equal "descr" {
+    description = "descr"
+    got         = data.aci_rest_managed.bgpCtxAfPol.content.descr
+    want        = ""
+  }
+
+  equal "ctrl" {
+    description = "ctrl"
+    got         = data.aci_rest_managed.bgpCtxAfPol.content.ctrl
+    want        = ""
+  }
+
+  equal "eDist" {
+    description = "eDist"
+    got         = data.aci_rest_managed.bgpCtxAfPol.content.eDist
+    want        = "20"
+  }
+
+  equal "iDist" {
+    description = "iDist"
+    got         = data.aci_rest_managed.bgpCtxAfPol.content.iDist
+    want        = "200"
+  }
+
+  equal "localDist" {
+    description = "localDist"
+    got         = data.aci_rest_managed.bgpCtxAfPol.content.localDist
+    want        = "220"
+  }
+
+  equal "maxLocalEcmp" {
+    description = "maxLocalEcmp"
+    got         = data.aci_rest_managed.bgpCtxAfPol.content.maxLocalEcmp
+    want        = "0"
+  }
+
+  equal "maxEcmp" {
+    description = "maxEcmp"
+    got         = data.aci_rest_managed.bgpCtxAfPol.content.maxEcmp
+    want        = "16"
+  }
+
+  equal "maxEcmpIbgp" {
+    description = "maxEcmpIbgp"
+    got         = data.aci_rest_managed.bgpCtxAfPol.content.maxEcmpIbgp
+    want        = "16"
+  }
+
+}
