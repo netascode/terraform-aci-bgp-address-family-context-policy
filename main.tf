@@ -3,7 +3,7 @@ resource "aci_rest_managed" "bgpCtxAfPol" {
   class_name = "bgpCtxAfPol"
   content = {
     name  = var.name
-    descr = var.description
+    # descr = var.description
     # ctrl         = var.enable_host_route_leak == true ? "host-rt-leak" : ""
     # eDist        = var.ebgp_distance
     # iDist        = var.ibgp_distance
