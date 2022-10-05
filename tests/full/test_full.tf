@@ -34,7 +34,7 @@ module "main" {
 }
 
 data "aci_rest_managed" "bgpCtxAfPol" {
-  dn = "uni/tn-${aci_rest_managed.fvTenant.content.name}/BD-${module.main.name}/bgpCtxAfP-TEST_MINIMAL"
+  dn = "uni/tn-${aci_rest_managed.fvTenant.content.name}/bgpCtxAfP-TEST_MINIMAL"
 
   depends_on = [module.main]
 }
