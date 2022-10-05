@@ -12,11 +12,11 @@ terraform {
     }
   }
 }
+
 resource "aci_rest_managed" "fvTenant" {
   dn         = "uni/tn-TF"
   class_name = "fvTenant"
 }
-
 
 module "main" {
   source = "../.."
