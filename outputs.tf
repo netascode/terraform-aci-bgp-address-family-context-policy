@@ -1,9 +1,9 @@
 output "dn" {
-  value       = aci_rest_managed.fvTenant.id
-  description = "Distinguished name of `fvTenant` object."
+  value       = aci_rest_managed.bgpCtxAfPol.id
+  description = "Distinguished name of `bgpCtxAfPol` object."
 }
 
 output "name" {
-  value       = aci_rest_managed.fvTenant.content.name
-  description = "Tenant name."
+  value       = aci_rest_managed.bgpCtxAfPol.content.name
+  description = "BGP Address Family Context Policy name."
 }
