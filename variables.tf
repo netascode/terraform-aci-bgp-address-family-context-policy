@@ -1,3 +1,13 @@
+variable "tenant" {
+  description = "Tenant name."
+  type        = string
+
+  validation {
+    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.tenant))
+    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
+  }
+}
+
 variable "name" {
   description = "BGP Address Family Context Policy name."
   type        = string
@@ -19,18 +29,8 @@ variable "description" {
   }
 }
 
-variable "tenant" {
-  description = "BGP Address Family Context Policy's Tenant name."
-  type        = string
-
-  validation {
-    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.tenant))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
-  }
-}
-
 variable "enable_host_route_leak" {
-  description = "Flag to enable host route leak"
+  description = "Flag to enable host route leaking."
   type        = bool
   default     = false
 

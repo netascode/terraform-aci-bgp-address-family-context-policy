@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.3.0"
+  required_version = ">= 1.0.0"
 
   required_providers {
     test = {
@@ -21,7 +21,7 @@ resource "aci_rest_managed" "fvTenant" {
 module "main" {
   source = "../.."
 
-  name                   = "TEST_MINIMAL"
+  name                   = "TEST_FULL"
   tenant                 = aci_rest_managed.fvTenant.content.name
   description            = "My BGP Policy"
   enable_host_route_leak = true
@@ -34,7 +34,7 @@ module "main" {
 }
 
 data "aci_rest_managed" "bgpCtxAfPol" {
-  dn = "uni/tn-${aci_rest_managed.fvTenant.content.name}/bgpCtxAfP-TEST_MINIMAL"
+  dn = "uni/tn-${aci_rest_managed.fvTenant.content.name}/bgpCtxAfP-TEST_FULL"
 
   depends_on = [module.main]
 }
@@ -45,7 +45,7 @@ resource "test_assertions" "bgpCtxAfPol" {
   equal "name" {
     description = "name"
     got         = data.aci_rest_managed.bgpCtxAfPol.content.name
-    want        = "TEST_MINIMAL"
+    want        = "TEST_FULL"
   }
 
   equal "descr" {
@@ -95,5 +95,4 @@ resource "test_assertions" "bgpCtxAfPol" {
     got         = data.aci_rest_managed.bgpCtxAfPol.content.maxEcmpIbgp
     want        = "8"
   }
-
 }
