@@ -3,7 +3,7 @@
 
 # Terraform ACI BGP Address Family Context Module
 
-Description
+Manages ACI BGP Address Family Context
 
 Location in GUI:
 `Tenants` » `XXX` » `Policies` » `Protocol` » `BGP` » `BGP Address Family Context`
