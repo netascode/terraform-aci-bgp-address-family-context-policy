@@ -87,5 +87,4 @@ resource "test_assertions" "bgpCtxAfPol" {
     got         = data.aci_rest_managed.bgpCtxAfPol.content.maxEcmpIbgp
     want        = "16"
   }
-
 }

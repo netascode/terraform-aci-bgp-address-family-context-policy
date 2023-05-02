@@ -8,7 +8,7 @@ resource "aci_rest_managed" "bgpCtxAfPol" {
     eDist        = var.ebgp_distance
     iDist        = var.ibgp_distance
     localDist    = var.local_distance
-    maxLocalEcmp = var.local_max_ecmp
+    maxLocalEcmp = var.local_max_ecmp != 0 ? var.local_max_ecmp : null
     maxEcmp      = var.ebgp_max_ecmp
     maxEcmpIbgp  = var.ibgp_max_ecmp
   }
